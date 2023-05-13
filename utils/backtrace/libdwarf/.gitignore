@@ -1,0 +1,13 @@
+*.o
+dwarf_names.c
+dwarf_names.h
+dwarf_names_enum.h
+dwarf_names_new.h
+libdwarf.a
+libdwarf.h
+config.h
+config.log
+config.status
+Makefile
+gennames
+ar-output-temp

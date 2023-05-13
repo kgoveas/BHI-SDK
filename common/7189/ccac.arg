@@ -1,0 +1,21 @@
+	-arcv2em
+	-core2
+	-HL
+	-Hpc_width=24
+	-Xcode_density
+	-Xdiv_rem=radix2
+	-Xswap
+	-Xbitscan
+	-Xmpy_option=wlh3
+	-Xshift_assist
+	-Xbarrel_shifter
+	-Xfpus_div
+	-Xfpus_mpy_slow
+	-Xfpus_div_slow
+	-Xtimer0
+	-Xstack_check
+	-Hccm
+	-Xdmac
+
+
+

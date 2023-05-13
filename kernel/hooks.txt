@@ -1,0 +1,16 @@
+HIFRead                   void            UInt8 addr                        UInt8 data
+HIFWrite                  void            UInt8 addr                        UInt8 data
+HIFComm                   void            UInt8 ch                          UInt32 total_xfer
+HIFErr                    void            UInt8 ch
+PhysicalRate              void            PhysicalSensorDescriptor* phys    float* rate
+TimerRate                 void            VirtualSensorDescriptor* timer    float* rate
+PhysicalRateChanged       void            PhysicalSensorDescriptor* phys    float rate
+PhysicalRangeChanged      void            PhysicalSensorDescriptor* phys    UInt16 range
+VirtualSensorsDetermined  void
+OverrideMaxRate           void            SensorDescriptorHeader* sensor    float* rate
+updatePhysicalState       void            PhysicalSensorDescriptor* phys
+determinePowerState       SensorPowerMode PhysicalSensorDescriptor* phys
+initOnce                  void
+initialize                void
+exitShutdown              void
+teardown                  void

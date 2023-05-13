@@ -1,0 +1,12 @@
+    -mcpu=em4_fpus
+    -mlittle-endian
+    -mcode-density
+    -mdiv-rem
+    -mswap
+    -mnorm
+    -mmpy-option=4
+    -mbarrel-shifter
+    -mfpu=fpus_div
+    -D_ARCVER=0x42
+    "-D_Interrupt=__attribute__((interrupt (\"ilink\")))"
+    -D_nop()=__builtin_arc_nop()

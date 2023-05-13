@@ -1,0 +1,97 @@
+License Agreement
+
+This software development kit (hereinafter called "SDK" or "Software") and any related
+information (hereinafter called "Information") is provided free of charge for the sole purpose
+to support you ("Licensee") in your product development and application work in connection
+with the use of Bosch Sensortec FUSER Core sensor products.
+
+THE SDK-SOFTWARE and SDK- INFORMATION ARE LICENSED SUBJECT TO ACCEPTANCE AND FULFILLMENT
+OF ALL LICENSE CONDITIONS STATED HEREINAFTER. ANY BREACH OF THE LICENSE CONDITIONS SHALL
+ENTITLE BOSCH SENSORTEC TO IMMEDIATELY TERMINATE THE LICENSE.
+
+Bosch Sensortec hereby grants Licensee the non-exclusive and non-transferable right to
+use the SDK-Software ("Licensed Software") and Information in combination with Bosch Sensortec
+FUSER Core sensors.
+
+The License is granted solely and exclusively for internal use of Licensee including their
+respective employees. No sub-license rights are granted. If the Licensee wishes to grant
+access to the Licensed Software and Information or any part of it to third party contractors,
+it must obtain prior written approval from Bosch Sensortec and its third party licensors prior
+to releasing, or granting such access to, the SDK-Software and Information.
+
+Except as expressly provided herein no rights either express or implied under any patents,
+copyrights, trademarks, trade secrets, know-how or other intellectual property of Bosch Sensortec
+or its licensors granted to the licensee and all such rights are exclusively reserved to Bosch
+Sensortec and its licensors. The license granted hereunder is not a license to incorporate the
+SDK-Software into any product, board, module, integrated circuit, core or other assembly or device.
+
+The Licensed Software and Information may contain copyright notice of companies other than Bosch
+Sensortec GmbH. Licensee acknowledges that the Licensed Software may include certain open source
+and/or third party software, which is governed by the applicable license terms thereof. A list
+of such open source software, as amended from time to time, including the links to applicable open source
+software licenses can be found within the docs folder. The use of any open source software bundled
+within the Licensed Software is subject to the provisions of such licenses and in the event of
+any contradiction between the provisions of this License Agreement and the provisions of such
+applicable licenses, the provisions of the applicable open source software license shall prevail.
+Bosch Sensortec makes no representation or warranty concerning such open source and included within
+the Licensed Software and provides no indemnification to Licensee or its customers, agents and
+distributors under this License Agreement. Nevertheless, for such software code the terms and conditions
+in this License Agreement shall apply and inure for the benefit of such affiliates and licensors of
+Bosch Sensortec.
+
+Licensee may make copies of the Licensed Software only if reasonably necessary for performing licensee's
+permitted activities hereunder. The licensee must retain and reproduce in all copies of the Licensed
+Software and Information the copyright and other proprietary notices, attributions and disclaimers as
+they appear in the Licensed Software, and keep intact all notices in the Licensed Software that refer to
+the license granted hereunder.  Bosch Sensortec (or its third party providers or licensors) retain title
+to all portions of the Licensed Software and Information and any copies thereof. The Information contains
+valuable proprietary information, and Licensee shall use such measures as it uses for its own similar
+information but in any event no less than reasonable measures to secure the Information from access by
+third parties and shall not disclose any portion of it to anyone other than those of its employees or
+consultants bound by written non-disclosure obligations at least as restrictive as those contained herein
+and having a need to know for purposes consistent with this License Agreement. Licensee shall be
+responsible for the compliance of such employees or consultants.
+
+Except to the extent permitted by law and subject to the rights of Licensee under any relevant open source 
+license disclosed hereunder, Licensee is not permitted to disassemble, reverse engineer or
+decompile the Licensed Software or to perform any other extraction or analysis in order to discover the
+source code of the Software.
+
+The licensee agrees to make any bug fixes or workarounds for any errors in the Licensed
+Software (collectively, "Error Corrections") available to Bosch Sensortec upon request.  The licensee
+hereby grants to Bosch Sensortec and its affiliates a non-exclusive, worldwide, royalty-free, perpetual
+and irrevocable license, under any intellectual property rights owned or controlled by the licensee, to use,
+reproduce, display, perform, modify or have modified (for Bosch Sensortec and/or any of its affiliates),
+sublicense and distribute such Error Corrections, in any form, through multiple tiers of distribution.
+
+The Information provided is believed to be accurate and reliable. Bosch Sensortec undertakes to apply the
+same care in preparing and making available the Licensed Software and Information, which it normally applies
+to similar matters in its own organization. In case the Information is determined to be deficient or incomplete,
+Bosch Sensortec shall use commercially reasonable effort to remedy such deficiency or furnish missing data.
+This shall be the sole and exclusive remedy for Licensee under and in connection with this license.
+
+Licensee acknowledges that the Software is not designed or intended for use in development of, or for incorporation
+into products, applications or services used in or in connection with life-sustaining or safety-relevant systems.
+Safety-relevant systems are those for which an error or inaccuracy in the content, functionality, services,
+data or information provided by any of the foregoing, or the failure or malfunction of any of the foregoing
+could lead to death, bodily harm or severe property damage or environmental damage and include without limitation
+manned or unmanned aerial devices, manned or unmanned motor vehicle systems, systems for  operation of nuclear facilities,
+mass transit systems, aircraft navigation or aircraft communication systems, air traffic control, weapon systems
+and direct life support machines.
+
+EXCEPT AS EXPRESSLY PROVIDED HEREIN, THE LICENSED SOFTWARE AND INFORMATION IS PROVIDED "AS IS" AND WITHOUT ANY
+CONDITIONS, REPRESENTATIONS OR WARRANTIES OF ANY KIND, INCLUDING UPGRADES OR SUPPORT OF ANY KIND AND BOSCH
+SENSORTEC EXPRESSLY DISCLAIMS ALL WARRANTIES AND/OR CONDITIONS, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES AND/OR CONDITIONS OF MERCHANTABILITY, OF SATISFACTORY QUALITY, OF FITNESS FOR A PARTICULAR
+PURPOSE, OF ACCURACY, OF QUIET ENJOYMENT, AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. BOSCH SENSORTEC DOES NOT
+WARRANT THAT THE FUNCTIONS CONTAINED IN THE LICENSED SOFTWARE WILL MEET SUPPLIER'S REQUIREMENTS, THAT THE OPERATION
+OF THE LICENSED SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT DEFECTS IN THE  LICENSED SOFTWARE WILL BE CORRECTED.
+NO ORAL OR WRITTEN INFORMATION OR ADVICE GIVEN BY BOSCH SENSORTEC SHALL CREATE A WARRANTY. EXCEPT AS EXPRESSLY PROVIDED
+HEREIN AND TO THE FULLEST EXTENT PERMITTED BY LAW, BOSCH SENSORTEC EXCLUDES ALL AND ANY LIABILITY HOWSOEVER ARISING UNDER
+THIS LICENSE OR RESULTING FROM THE LICENSEE'S USE OF THE SDK-SOFTWARE AND INFORMATION.
+
+Licensee hereby agrees to indemnify and hold Bosch Sensortec harmless from and against any liability, claims,
+demands and expenses(including attorney fees) resulting from any actual or alleged defect or damages or
+injuries (including death) related to products developed, sold or otherwise distributed by Licensee and/or its
+direct or indirect end customers using the Licensed Software or from the sale or use of such products for any
+prohibited purpose as set forth herein.

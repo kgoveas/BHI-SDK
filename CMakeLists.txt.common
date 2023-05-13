@@ -1,0 +1,105 @@
+################################################################################
+###
+### @file       CMakeLists.txt.common
+###
+### @project    EM7189
+###
+### @brief
+###
+### @classification  Confidential
+###
+################################################################################
+###
+################################################################################
+###
+### @copyright Copyright (C) 2019 EM Microelectronic
+### @cond
+###
+### All rights reserved.
+###
+### Redistribution and use in source and binary forms, with or without
+### modification, are permitted provided that the following conditions are met:
+### 1. Redistributions of source code must retain the above copyright notice,
+### this list of conditions and the following disclaimer.
+### 2. Redistributions in binary form must reproduce the above copyright notice,
+### this list of conditions and the following disclaimer in the documentation
+### and/or other materials provided with the distribution.
+###
+################################################################################
+###
+### THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+### AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+### IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+### ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+### LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+### CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+### SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+### INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+### CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+### ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+### POSSIBILITY OF SUCH DAMAGE.
+### @endcond
+################################################################################
+include(ExternalProject)
+
+get_filename_component(EM718X_TOP ${CMAKE_SOURCE_DIR} ABSOLUTE)
+
+if( EXISTS ${CMAKE_CURRENT_BINARY_DIR}/DISCLAIMER.txt )
+    file(READ ${CMAKE_CURRENT_BINARY_DIR}/DISCLAIMER.txt disclaimer)
+    message("${disclaimer}")
+elseif( EXISTS "${EM718X_TOP}/DISCLAIMER.txt" )
+    file(READ DISCLAIMER.txt disclaimer)
+    message("${disclaimer}")
+endif()
+
+include(config.cmake)
+include(cmake/clang-format.cmake)
+
+if( CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows" AND NOT BUILD_UTILS )
+    add_custom_target(utils ALL)
+    if(NOT UTILS_BIN_DIR)
+        set(UTILS_BIN_DIR ${CMAKE_SOURCE_DIR}/win64/bin )
+    endif()
+    message(STATUS "Using prebuilt Windows host tools ${UTILS_BIN_DIR}")
+else()
+    # utils to install in <build>/bin
+    ExternalProject_Add(utils
+        PREFIX ${CMAKE_BINARY_DIR}
+        SOURCE_DIR ${CMAKE_SOURCE_DIR}/utils
+        BINARY_DIR ${CMAKE_BINARY_DIR}/utils
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:path=<INSTALL_DIR> -DDIST_TYPE=${DIST_TYPE} -DROM_NAME=${ROM_NAME} -DCMAKE_MAKE_PROGRAM:string=${CMAKE_MAKE_PROGRAM}
+        CMAKE_CACHE_ARGS "-DEM718X_TOP:string=${CMAKE_SOURCE_DIR}" "-DUTILS:string=${INSTALL_UTILS}"
+        INSTALL_DIR ${CMAKE_BINARY_DIR}
+        BUILD_ALWAYS 1
+    )
+    # Ensure the install step also always runs.
+    ExternalProject_Add_Step(utils always_install
+        COMMAND ${CMAKE_COMMAND} -E echo_append
+        ALWAYS 1
+        DEPENDERS install
+    )
+
+    set(UTILS_BIN_DIR ${CMAKE_BINARY_DIR}/bin)
+endif()
+
+if(ARC_COMPILER)
+    add_subdirectory(boards)
+
+    # imports must be added from the top level
+    add_subdirectory(libs)
+    add_subdirectory(drivers)
+    add_subdirectory(drivers_custom)
+    if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/${ROM_NAME}/CMakeLists.txt)
+        add_subdirectory(${ROM_NAME})
+    endif()
+    add_subdirectory(${KERNEL_STAGE})
+    add_subdirectory(${USER_STAGE})
+    add_subdirectory(apps)
+else()
+    message(WARNING "No ARC_COMPILER found. not building firmware")
+endif()
+
+IF(SDK)
+    # install compiled utilities for the customer sdk
+    INSTALL(DIRECTORY ${UTILS_BIN_DIR}/ DESTINATION utils USE_SOURCE_PERMISSIONS)
+ENDIF()
