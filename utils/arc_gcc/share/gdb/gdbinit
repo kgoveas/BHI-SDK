@@ -1,0 +1,6 @@
+python
+import sys
+sys.path.insert(0, '/u/svc-arcoss_auto/arcoss_verification/arc-gnu-toolchain/workspace/builds/1319/arc-multilib-elf32/share/gcc-12.2.1/python')
+from libstdcxx.v6.printers import register_libstdcxx_printers
+register_libstdcxx_printers (None)
+end
