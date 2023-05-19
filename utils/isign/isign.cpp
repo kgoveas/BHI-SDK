@@ -786,6 +786,7 @@ error_t fwAddPubKey(KeyList_t *keyList, const char *pubKeyFilename[])
     Key_t  *pubKeys;
     uint8_t numPubKeys = 0;
     int     i;
+    uint32_t key[sizeof(POINT) / 4] = {0};
 
     if (keyList->hdr.keyMagic != KEY_MAGIC)
     {
@@ -809,7 +810,8 @@ error_t fwAddPubKey(KeyList_t *keyList, const char *pubKeyFilename[])
             }
             fread(&pubKeys[i].key, 1, 40, pubKeyFile);
             pubKeys[i].crc = 0xffffffff;
-            pubKeys[i].crc = update_crc_32(pubKeys[i].crc, (uint32_t *)&pubKeys[i].key, sizeof(POINT) / 4);
+            memcpy(key, &pubKeys[i].key, sizeof(POINT));
+            pubKeys[i].crc = update_crc_32(pubKeys[i].crc, key, sizeof(POINT) / 4);
             fclose(pubKeyFile);
         }
     }
@@ -1403,6 +1405,7 @@ error_t sign_digest(const char *digestHex, const char *KeyFilename)
 // - Image CRC, SHA, ECDSA signature, public key CRCs, Header CRC
 error_t check_image(FWHeader_t *fwHdr, uint8_t *fwBuffer, POINT *publicKey)
 {
+    uint32_t key[sizeof(POINT) / 4] = {0};
     if (verbose)
     {
         printf("Firmware header\n");
@@ -1489,7 +1492,8 @@ error_t check_image(FWHeader_t *fwHdr, uint8_t *fwBuffer, POINT *publicKey)
             if (pubKeys[i].crc != 0)
             {
                 crc = CRC_SEED;
-                crc = update_crc_32(crc, (uint32_t *)&pubKeys[i].key, sizeof(POINT) / 4);
+                memcpy(key, &pubKeys[i].key, sizeof(POINT));
+                crc = update_crc_32(crc, key, sizeof(POINT) / 4);
                 if (crc != pubKeys[i].crc)
                 {
                     fprintf(stderr, "Image verification error in embedded public key CRC %d\n", i);
@@ -1563,6 +1567,7 @@ error_t verify_fw(const char *FwFilename, const char *KeyFilename, uint8_t imgId
     KeyList_t *keyList         = NULL;
     uint8_t   *keyBuffer       = NULL;
     POINT     *verificationKey = NULL;
+    POINT      keyTemp;
 
     if (NULL != KeyFilename)
     {
@@ -1632,7 +1637,9 @@ error_t verify_fw(const char *FwFilename, const char *KeyFilename, uint8_t imgId
                       (fwHdr->ImageFlags.bits.ImgTypeFlash &&
                        (KEY_LOCATION_FLASH == fwHdr->KeyFlags.bits.Location))))
             {
-                verificationKey = &keyList->keys[fwHdr->KeyFlags.bits.Index].key;
+                memcpy(&keyTemp, &keyList->keys[fwHdr->KeyFlags.bits.Index].key, sizeof(POINT));
+                verificationKey = &keyTemp;
+
             }
 
             if (SUCCESS != check_image(fwHdr, fwBuffer, verificationKey))
